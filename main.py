@@ -1,30 +1,18 @@
-from users.user_auth import get_username
-from utils.styling import title
+from users.user_auth import get_user
+from tasks.task_crud import task_menu
+from utils.styling import print_title, info_message
+from utils.motivational_quotes import get_quote
 
 def main():
-    user=get_username()
+    print_title("Welcome to Your Personal Task Manager")
+    get_quote()  # Show motivational quote at start
+    print()
+    try:
+        user = get_user()
+    except Exception as e:
+        print(e)
 
-    while True:
-        print("1. Add Task")
-        print("2. View Tasks")
-        print("3. Delete Task")
-        print("4. Exit")
-
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            print("Add Task feature coming soon!")
-        elif choice == '2':
-            print("View Task feature coming soon!")
-        elif choice == '3':
-            print("Delete Task feature coming soon!")
-        elif choice == '4':
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid choice. Try again.")
-
+    task_menu(user)
 
 if __name__ == "__main__":
     main()
-            
